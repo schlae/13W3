@@ -33,9 +33,9 @@ You will need to solder some jumper wires to configure the 13W3 adapter for the 
 Notes:
 1. The RS/6000 is wired for monitor ID 1010.
 2. The SGI wiring connections have not been tested but should work.
-3. Some video cards with Sun's old pinout lack Hsync and Vsync, so we connect Csync to the H pad (but see § Composite Sync).
-4. All video cards with Sun's DDC pinout lack Hsync, so we connect Csync to the H pad (but see § Composite Sync).
-5. Hdrive and Vdrive are not equivalent to Hsync and Vsync, so we connect Csync to the H pad (but see § Composite Sync).
+3. Some video cards with Sun's old pinout lack Hsync and Vsync, so we connect Csync to the H pad, but see [§ Composite Sync](#composite-sync-and-sync-on-green) for more details.
+4. All video cards with Sun's DDC pinout lack Hsync, so we connect Csync to the H pad, but see [§ Composite Sync](#composite-sync-and-sync-on-green) for more details.
+5. Hdrive and Vdrive are not equivalent to Hsync and Vsync, so we connect Csync to the H pad, but see [§ Composite Sync](#composite-sync-and-sync-on-green) for more details.
 6. Sense codes control the default resolution and refresh rate, unless DDC is supported and connected to your VGA monitor.
     * default sense code 000<sub>2</sub> is 1152x900@66
     * jump pins 3 and 9 to Gnd (101<sub>2</sub>) for 1280x1024@76
