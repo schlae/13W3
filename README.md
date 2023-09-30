@@ -17,30 +17,31 @@ Unless you need the composite sync separator, assembly is easy: just install J1 
 
 You will need to solder some jumper wires to configure the 13W3 adapter for the particular workstation you are using. Ground pads are located next to the pads that are marked with the pin number that they are connected to. Using the table below, connect the pads to ground, leave them floating, or jumper them to the H (horizontal sync) or V (vertical sync) pads.
 
-| 13W3 pin | Sun (old)          | Sun (DDC)        | RS/6000 [4]     | SGI [5]     |
-|----------|--------------------|------------------|-----------------|-------------|
-| 1        | n/c (serial read)  | n/c (DDC SCL)    | Gnd (ID-2)      | n/c (mon3)  |
-| 2        | n/c (Vsync) [1]    | n/c (DDC 5V)     | n/c (ID-3)      | n/c (mon2)  |
-| 3        | n/c (sense2) [3]   | n/c (sense2) [3] | Gnd (self test) | n/c (Csync) |
-| 4        | Gnd (for sense)    | Gnd (for DDC)    | Gnd             | H           |
-| 5        | H (Csync) [1]      | H (Csync) [2]    | H               | V           |
-| 6        | n/c (Hsync) [1]    | n/c (DDC SDA)    | Gnd (ID-0)      | n/c (mon1)  |
-| 7        | n/c (serial write) | n/c (Vsync) [2]  | n/c (ID-1)      | n/c (mon2)  |
-| 8        | n/c (sense1) [3]   | n/c (sense1) [3] | n/c             | Gnd         |
-| 9        | n/c (sense0) [3]   | n/c (sense0) [3] | V               | Gnd         |
-| 10       | Gnd (for sync)     | Gnd (for sync)   | Gnd             | Gnd         |
+| 13W3 pin | Sun (old)          | Sun (DDC)        | RS/6000 [1]     | SGI (old) [2]    | SGI (DDC) [2]   |
+|----------|--------------------|------------------|-----------------|------------------|-----------------|
+| 1        | n/c (serial read)  | n/c (DDC SCL)    | Gnd (ID-2)      | n/c (id3)        | n/c (DDC SCL)   |
+| 2        | n/c (Vsync) [3]    | n/c (DDC 5V in)  | n/c (ID-3)      | n/c (id0)        | n/c (DDC SDA)   |
+| 3        | n/c (sense2) [6]   | n/c (sense2) [6] | Gnd (self test) | n/c (Csync)  [5] | n/c (Csync)     |
+| 4        | Gnd (for sense)    | Gnd (for DDC)    | Gnd             | n/c (Hdrive) [5] | H               |
+| 5        | H (Csync) [3]      | H (Csync) [4]    | H               | n/c (Vdrive) [5] | V               |
+| 6        | n/c (Hsync) [3]    | n/c (DDC SDA)    | Gnd (ID-0)      | n/c (id1)        | n/c (DDC 5V in) |
+| 7        | n/c (serial write) | n/c (Vsync) [4]  | n/c (ID-1)      | n/c (id2)        | Gnd (for DDC)   |
+| 8        | n/c (sense1) [6]   | n/c (sense1) [6] | n/c             | Gnd              | Gnd             |
+| 9        | n/c (sense0) [6]   | n/c (sense0) [6] | V               | Gnd              | Gnd             |
+| 10       | Gnd (for sync)     | Gnd (for sync)   | Gnd             | Gnd              | Gnd             |
 
 Notes:
-1. Some video cards with Sun's old pinout lack Hsync and Vsync, so we connect Csync to the H pad (but see § Composite Sync).
-2. All video cards with Sun's DDC pinout lack Hsync, so we connect Csync to the H pad (but see § Composite Sync).
-3. Sense codes control the default resolution and refresh rate, unless DDC is supported and connected to your VGA monitor.
+1. The RS/6000 is wired for monitor ID 1010.
+2. The SGI wiring connections have not been tested but should work.
+3. Some video cards with Sun's old pinout lack Hsync and Vsync, so we connect Csync to the H pad (but see § Composite Sync).
+4. All video cards with Sun's DDC pinout lack Hsync, so we connect Csync to the H pad (but see § Composite Sync).
+5. Hdrive and Vdrive are not equivalent to Hsync and Vsync, so we connect Csync to the H pad (but see § Composite Sync).
+6. Sense codes control the default resolution and refresh rate, unless DDC is supported and connected to your VGA monitor.
     * default sense code 000<sub>2</sub> is 1152x900@66
     * jump pins 3 and 9 to Gnd (101<sub>2</sub>) for 1280x1024@76
     * jump pin 8 to Gnd (010<sub>2</sub>) for 1024x768@60
     * for other sense codes, see [TurboGX/TurboGXplus Hardware Installation Guide](https://docs.oracle.com/cd/E19957-01/801-5399-10/801-5399-10.pdf), Table C-3
     * not all sense codes are supported by all video cards, see the Sun [Frame Buffer FAQ](http://www.sunhelp.org/faq/FrameBuffer.html#5)
-4. The RS/6000 is wired for monitor ID 1010.
-5. The SGI wiring connections have not been tested but should work.
 
 Once you finish the wiring, it's a good idea to mark the board with the name of the system it is wired for. The space underneath the silkscreen text "FOR BEST RESULTS USE WITH:" is provided for this purpose.
 
