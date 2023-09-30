@@ -38,6 +38,7 @@ Notes:
     * jump pins 3 and 9 to Gnd (101<sub>2</sub>) for 1280x1024@76
     * jump pin 8 to Gnd (010<sub>2</sub>) for 1024x768@60
     * for other sense codes, see [TurboGX/TurboGXplus Hardware Installation Guide](https://docs.oracle.com/cd/E19957-01/801-5399-10/801-5399-10.pdf), Table C-3
+    * not all sense codes are supported by all video cards, see the Sun [Frame Buffer FAQ](http://www.sunhelp.org/faq/FrameBuffer.html#5)
 4. The RS/6000 is wired for monitor ID 1010.
 5. The SGI wiring connections have not been tested but should work.
 
